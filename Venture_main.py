@@ -4,6 +4,9 @@ import requests
 from bs4 import BeautifulSoup
 import datetime
 import os
+import pyautogui
+import webbrowser
+import random
 
 
 
@@ -21,7 +24,7 @@ def takeCommand():
     with speech_recognition.Microphone() as source:
         print("Listening...")
         r.pause_threshold = 1
-        r.energy_threshold = 400
+        r.energy_threshold = 300
         audio = r.listen(source,0,9)
 
     try:
@@ -62,6 +65,35 @@ if __name__ == "__main__":
                 elif "thank you" in query:
                     speak("You are welcome sir!")
 
+                elif "tired" in query:
+                    speak("Playing your favorite song, sir!")
+                    a = (1,2,3,)
+                    b = random.choice(a)
+                    if b == 1:
+                        webbrowser.open("https://www.youtube.com/watch?v=sUf2PtEZris&pp=ygUQc2hha3kgc2hha3kgc29uZw%3D%3D")
+
+
+                elif "stop" in query:
+                    pyautogui.press("k")
+                    speak("stop sir!")
+                elif "play" in query:
+                    pyautogui.press("k")
+                    speak("Playing sir!")
+                
+                elif "mute" in query:
+                    pyautogui.press("m")
+                    speak("Muted sir!")
+                                
+                elif "volume up" in query:
+                    from keyboard import volumeup
+                    speak("Volume up sir!")
+                    volumeup()
+                
+                elif "volume down" in query:
+                    from keyboard import volumedown
+                    speak("Volume down sir!")
+                    volumedown()
+
                 elif "open" in query:
                    from Dictapp import openappweb
                    openappweb(query)
@@ -83,6 +115,12 @@ if __name__ == "__main__":
                     from SearchNow import searchWikipedia
                     searchWikipedia(query)
                     print("Done")
+
+                elif "news" in query:
+                    from NewsRead import letestsnews
+                    letestsnews()
+                    print("Done")
+
                
                 elif "temperature" in query:
                     search = "temperature in varanasi"
@@ -114,8 +152,23 @@ if __name__ == "__main__":
                     speak(f"The time is {strTime}")
                     print(strTime)
                 
-                elif "finally sleep" in query:
+                elif "go to shutdown" in query:
                     speak("Goodbye,i am going to sleep mode, have a nice day!")
-                    break
+                    exit()
+                
+                elif "remember that" in query:
+                    rememberMessage = query.replace("remember that", "")
+                    rememberMessage = query.replace("venture", "")
+                    speak("you told me to remember that" + rememberMessage)
+                    remember = open("Remember.txt", "w")
+                    remember.write(rememberMessage)
+                    remember.close()
+                
+                elif "what do you remember" in query:
+                    remember = open("Remember.txt", "r")
+                    speak("You told me" + remember.read())
+                
+
+                    
 
                 
