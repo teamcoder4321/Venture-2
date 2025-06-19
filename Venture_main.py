@@ -35,7 +35,6 @@ def takeCommand():
         print("Sorry, I didn't catch that.")
         return "None"
     return query
-
 def alarm(query):
     timehere = open("Alarm.txt", "a")
     timehere.write(query)
