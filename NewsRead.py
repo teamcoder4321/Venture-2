@@ -22,6 +22,7 @@ def letestsnews():
             "sports":"https://newsapi.org/v2/top-headlines?country=in&country=in&category=sports&apiKey=378bb5ff8391497a8adcca2d4b685ca7",
             "technology":"https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=378bb5ff8391497a8adcca2d4b685ca7",
             "politics":"https://newsapi.org/v2/top-headlines?country=in&country=in&category=politics&apiKey=378bb5ff8391497a8adcca2d4b685ca7",
+            # "headline":https://newsapi.org/v2/top-headlines?country=in&apiKey=378bb5ff8391497a8adcca2d4b685ca7,
             # "business2":""https://newsapi.org/v2/top-headlines?country=in&apiKey=378bb5ff8391497a8adcca2d4b685ca7",
             # "https://newsapi.org/v2/top-headlines?country=in&country=in&category=business&apiKey=378bb5ff8391497a8adcca2d4b685ca7"
             
@@ -32,7 +33,7 @@ def letestsnews():
     url = None
     speak("Which category of news would you like to hear? You can choose from ,[business], [entertainment], [general], [health], [science], [sports], or [technology].")
     field = input("Type field news: ")
-    for key , value in api_dict.items():
+    for key ,value in api_dict.items():
         if key.lower() in field.lower():
             url = value
             print(url)
@@ -40,8 +41,8 @@ def letestsnews():
             break
         else:
             url = True
-            if url is True:
-                print("url was not found")
+    if url is True:
+        print("url was not found")
                
 
     news = requests.get(url).text
@@ -53,13 +54,13 @@ def letestsnews():
         article = articles["title"]
         print(article)
         speak(article)
-        news_url = article["url"]
+        news_url = articles["url"]
         print(f"for more info visit: {news_url}")
 
         a = input("[press 1 to cont] and [press 2 to stop]: ")
-        if str(a) == 1:
+        if str(a) == "1":
             pass
-        elif str(a) == 2:
+        elif str(a) == "2":
             break
 
     speak("Thanks for listening!")

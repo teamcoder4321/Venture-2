@@ -77,19 +77,19 @@ def searchWikipedia(query):
     def searchWeather(query):
         if "weather" in query:
             search = "weather in varanasi"
-            url = f"https://www.google.com/search?q={search}" + query
+            url = f"https://www.google.com/search?client=opera&q={search}" + query
             r = requests.get(url)
             data = BeautifulSoup(r.text, "html.parser")
             temp = data.find("div", class_="BNeawe").text
             speak(f"Current {search} is {temp}")
-            print(temp)
+            print(f"Current {search} is {temp}")
 
     def searchTemperature(query):
         if "temperature" in query:
             search = "temperature in varanasi"
-            url = f"https://www.google.com/search?q={search}" + query
+            url = f"https://www.google.com/search?client=opera&q={search}" + query
             r = requests.get(url)
             data = BeautifulSoup(r.text, "html.parser")
             temp = data.find("div", class_="BNeawe").text
             speak(f"Current {search} is {temp}")
-            print(temp)
+            print(f"Current {search} is {temp}")
