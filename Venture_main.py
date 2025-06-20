@@ -10,6 +10,7 @@ import random
 from plyer import notification
 from pygame import mixer
 import speedtest_cli
+import sys
 
 
 for i in range(3):
@@ -23,7 +24,7 @@ for i in range(3):
         break
     elif (i==2):
         print("Access Denied!")
-        exit()
+        
     elif (a!=pw):
         print("Try Again,Sir!")
 
@@ -134,12 +135,12 @@ if __name__ == "__main__":
                     )
 
                 elif "focus mode" in query:
-                    a = int(input("Are you sure, Sir? :- (yes/no) " ) )
+                    a = int(input("Are you sure, Sir? :- (1 yes/2 no) " ) )
                     if (a==1):
                         speak("Entering the focus mode.......!")
                         # from Focusmode import is_admin
                         # is_admin()
-                        os.startfile("C:\Users\hp\Desktop\Venture 2\Focusmode.py")
+                        os.startfile("C:\\Users\\hp\\Desktop\\Venture 2\\Focusmode.py")
                         # exit()   
 
                     else:
@@ -147,6 +148,12 @@ if __name__ == "__main__":
                 elif "show my focus" in query:
                     from Focus_Graph import focus_graph
                     focus_graph()
+
+                elif "translate" in query:
+                    from Translator import translategl
+                    query = query.replace("translate", "")
+                    query = query.replace("venture", "")
+                    translategl(query)
 
 
                 elif "launch" in query:
