@@ -39,7 +39,7 @@ play_gif
 engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
 engine.setProperty("voice", voices[0].id)  # Set the voice to the first available voice
-engine.setProperty("rate", 170)  # Set the speech rate (words per minute)
+engine.setProperty("rate", 190)  # Set the speech rate (words per minute)
 
 def speak(audio):
     engine.say(audio)
